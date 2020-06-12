@@ -1,0 +1,92 @@
+@charset "utf-8";
+/* CSS Document */
+
+h1 {display: none;}
+
+body {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	flex-wrap:wrap;
+}
+.box {
+	width: 100px;
+	height: 100px;
+	background: skyblue;
+	cursor:pointer;
+	transition: 0.8s;
+	margin: 8px;
+	text-align: center;
+	line-height: 100px;
+}
+
+.win{
+	background: pink;
+	border-radius: 50%;
+	transform: rotate(360deg);
+}
+
+.lose{
+	transform: scale(0.8);
+}
+
+
+.btn {
+  background-color: #fbafaf;
+  border-bottom: solid 2px #ca2c2c;
+  color: #fff;
+  display: inline-block;
+  font-size: 32px;
+  font-weight: bold;
+  margin-right: 15px;
+  padding: 5px 10px;
+}
+/* activeクラス */
+.active {
+  background-color: #ff5555;
+}
+
+.element {
+	width: 200px;
+	height: 200px;
+	background: #f00;
+}
+
+.element[data-emergence=hidden] {
+	opacity: 0;
+	transition-delay:4s;
+	-webkit-transition-delay:4s;
+	-moz-transition-delay:4s;
+    -ms-transition-delay:4s;
+	-webkit-transition: all 1s;
+	-moz-transition: all 1s;
+    -ms-transition: all 1s;
+	transform: translate(-150px,0); 
+	-webkit-transform: translate(-150px,0);
+	-moz-transition: translate(-150px,0);
+    -ms-transition: translate(-150px,0);
+}
+
+.element[data-emergence=visible] {
+	opacity: 1.0;
+	transition-delay:4s;
+	-webkit-transition-delay:4s;
+	-moz-transition-delay:4s;
+    -ms-transition-delay:4s;
+	-webkit-transition: all 1.5s;
+	-moz-transition: all 1.5s;
+    -ms-transition: all 1.5s;
+	transform: translate(0,0); 
+	-webkit-transform: translate(0,0);
+	-webkit-transition: translate(0,0);
+	-moz-transition: translate(0,0);
+    -ms-transition: translate(0,0);
+}
+
+.inner {
+	width: 100%;
+	height: 200px;
+}
+

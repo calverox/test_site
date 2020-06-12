@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" charset="utf-8">
+	<title>Emergence</title>
+	<link href="./css/reset.css" rel="stylesheet"  media="all">
+	<link href="./css/index.css" rel="stylesheet"  media="all">
+	<!--<script src="js/jquery_3.2.1.js"></script>
+	<script src="js/index.js"></script>-->
+	<style>
+		*{margin: 0;padding: 0;list-style: none;box-sizing: border-box;}
+		.list{
+			width: 1000px;
+			margin: 300px auto 0 auto;
+			overflow: hidden;
+		}
+		.list li{
+			padding: 20px;
+			background-color: #0c4dd5;
+			margin-right: 20px;
+			margin-bottom: 10px;
+			color: #fff;
+			font-size: 20px;
+			cursor: pointer;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<!-- <ul class="list">
+		<li class="apple" id="ringo">リンゴ</li>
+		<li class="orange">みかん</li>
+		<li class="grape">ぶどう</li>
+	</ul> -->
+	<ol id="lists">
+	</ol>
+	<button id="addBtn">もっと</button>
+
+	<script>
+		'use strict'
+		
+		// const unfollow = function() {
+		// 	console.log("フォローを外しました。")
+		// }
+		
+		// const cancelTweet = function() {
+		// 	console.log("ツイートをキャンセルしました。")
+		// }
+
+		// function confirmed(fn) { //コールバック関数
+		// 	const input = window.prompt("実行しますか？"); //prompt 選択できるのアラートを出す
+		// 	fn(input); //コールバック関数
+		// }
+
+		// confirmed( function(input){
+		// 	if (input === "実行"){ 
+		// 		console.log("リポジトリ削除");
+		// 	}
+		// }); //呼び出し
+
+		// const btn = document.getElementById("button");
+		// btn.addEventListener('click' , function(){
+		// 	console.log("クリックされました。");
+		// });
+
+		// const foods = ["にんじん","ジャガイモ","玉ねぎ"];
+
+		// foods.forEach( function(food){ //foodにfoodsの文字列を代入(コールバック関数)‼
+		// 	console.log(food);
+		// });
+
+		// https://jsonplaceholder.typicode.com/users
+
+		// async function callApi() {
+		// 	const res = await fetch("https://jsonplaceholder.typicode.com/users");
+		// 	const users = await res.json();
+		// 	console.log(users);
+		// }
+		
+		// callApi(); //中身を呼び出し
+
+		//DOM
+		const button = document.getElementById("addBtn");
+		const lists = document.getElementById("lists");
+		
+		//関数（メソッド）
+		function addList(user){
+			const list = document.createElement("li");
+			list.innerText = user.name;
+			lists.appendChild(list);
+		}
+
+		async function getUsers(){
+			// //データのやり取り
+			const res =await fetch("https://jsonplaceholder.typicode.com/users");//API
+			const users = await res.json(); //promiseをレスポンスオブジェクトのjson()で返還
+			return users;
+		}
+
+		async function listUsers(){
+			const users = await getUsers(); //promiseをレスポンスオブジェクトのjson()で返還
+
+			//DOMの操作			
+			users.forEach(addList);
+		}
+
+		//イベント
+		button.addEventListener("click",listUsers);
+		window.addEventListener("load",listUsers);
+		
+	</script>
+
+</body>
+<script src="js/emergence.min.js"></script>
+<!--<script>
+	emergence.init({
+	  reset: false,
+	  handheld: true,
+	  elemCushion: 0.50,
+	  offsetTop: 300,
+	  offsetBottom: 100,
+	  throttle: 300
+	});
+
+	$('h1').fadeIn(3500)
+
+</script>-->
+</html>
+
