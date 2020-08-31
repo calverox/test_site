@@ -3,18 +3,25 @@
 <head>
 	<meta http-equiv="content-type" charset="utf-8">
 	<title>Emergence</title>
-	<link href="./css/reset.css" rel="stylesheet"  media="all">
-	<link href="./css/index.css" rel="stylesheet"  media="all">
+	<link href="./css/reset.css" rel="stylesheet" media="all">
+	<link href="./css/index.css" rel="stylesheet" media="all">
 	<!--<script src="js/jquery_3.2.1.js"></script>
 	<script src="js/index.js"></script>-->
 	<style>
-		*{margin: 0;padding: 0;list-style: none;box-sizing: border-box;}
-		.list{
+		* {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			box-sizing: border-box;
+		}
+
+		.list {
 			width: 1000px;
 			margin: 300px auto 0 auto;
 			overflow: hidden;
 		}
-		.list li{
+
+		.list li {
 			padding: 20px;
 			background-color: #0c4dd5;
 			margin-right: 20px;
@@ -36,15 +43,15 @@
 	</ul> -->
 	<ol id="lists">
 	</ol>
-	<button id="addBtn">もっと</button>
+	<button id="addBtn">見る</button>
 
 	<script>
 		'use strict'
-		
+
 		// const unfollow = function() {
 		// 	console.log("フォローを外しました。")
 		// }
-		
+
 		// const cancelTweet = function() {
 		// 	console.log("ツイートをキャンセルしました。")
 		// }
@@ -55,7 +62,7 @@
 		// }
 
 		// confirmed( function(input){
-		// 	if (input === "実行"){ 
+		// 	if (input === "実行"){
 		// 		console.log("リポジトリ削除");
 		// 	}
 		// }); //呼び出し
@@ -78,38 +85,38 @@
 		// 	const users = await res.json();
 		// 	console.log(users);
 		// }
-		
+
 		// callApi(); //中身を呼び出し
 
 		//DOM
 		const button = document.getElementById("addBtn");
 		const lists = document.getElementById("lists");
-		
+
 		//関数（メソッド）
-		function addList(user){
+		function addList(user) {
 			const list = document.createElement("li");
 			list.innerText = user.name;
 			lists.appendChild(list);
 		}
 
-		async function getUsers(){
+		async function getUsers() {
 			// //データのやり取り
-			const res =await fetch("https://jsonplaceholder.typicode.com/users");//API
+			const res = await fetch("https://jsonplaceholder.typicode.com/users");//API
 			const users = await res.json(); //promiseをレスポンスオブジェクトのjson()で返還
 			return users;
 		}
 
-		async function listUsers(){
+		async function listUsers() {
 			const users = await getUsers(); //promiseをレスポンスオブジェクトのjson()で返還
 
-			//DOMの操作			
+			//DOMの操作
 			users.forEach(addList);
 		}
 
 		//イベント
-		button.addEventListener("click",listUsers);
-		window.addEventListener("load",listUsers);
-		
+		button.addEventListener("click", listUsers);
+		window.addEventListener("load", listUsers);
+
 	</script>
 
 </body>
@@ -128,4 +135,3 @@
 
 </script>-->
 </html>
-
